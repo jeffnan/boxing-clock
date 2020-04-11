@@ -7,16 +7,19 @@ import applescript
 #Update with new GUI
 #Should this be dynamic for any music player?
 #Should I build function for the ringing?
-#Include aiff in the git folder
-#Create class for each round
-#Maximize GUI screen
+
+class Round:
+	def __init__(self, minutes, seconds, color):
+		self.minutes = minutes
+		self.seconds = seconds
+		self.color = color
+		self.roundDuration = (minutes * 60) + seconds
 
 playPauseScript = """tell app "Spotify" to playpause"""
 currentMusicStateScript = """tell app "Spotify" to get player state"""
 
 currentVolScript = """output volume of (get volume settings)"""
 maxVolScript = """set volume output volume 100"""
-
 
 def roundChangeAlarm(rings: int):
 	"""Pauses music if music is playing, changes to max volume to ring alarm, sets volume back to normal and continues music"""
@@ -68,29 +71,26 @@ secondsRest = int(t1Screen.numinput(title = "Rest", prompt = "How many seconds w
 
 numOfRounds = int(t1Screen.numinput(title = "Total Round", prompt = "How many round do you want to box for?", default = None, minval = 0, maxval = 20))
 
-boxingRound = int((minutesBoxing * 60) + secondsBoxing)
-speedRound = int((minutesSpeed * 60) + secondsSpeed)
-restRound = int((minutesRest * 60) + secondsRest)
-
-
-
 green = "#94f000"
 yellow = "#f0e000"
 red = "#ff0000"
 
+boxing = Round(minutesBoxing, secondsBoxing, green)
+speed = Round(minutesSpeed, secondsSpeed, yellow)
+rest = Round(minutesRest, secondsRest, red)
+
 for _ in range(numOfRounds):
-	screenDisplay(green, minutesBoxing, secondsBoxing, boxingRound)
+	screenDisplay(boxing.color, boxing.minutes, boxing.seconds, boxing.roundDuration)
 	roundChangeAlarm(2)
 
-	screenDisplay(yellow, minutesSpeed, secondsSpeed, speedRound)
+	screenDisplay(speed.color, speed.minutes, speed.seconds, speed.roundDuration)
 	roundChangeAlarm(1)
 
-	screenDisplay(red, minutesRest, secondsRest, restRound)
+	screenDisplay(rest.color, rest.minutes, rest.seconds, rest.roundDuration)
 	roundChangeAlarm(3)
 
 #GitHub
 #https://towardsdatascience.com/getting-started-with-git-and-github-6fcd0f2d4ac6
-
 
 # AppleScript
 # https://alvinalexander.com/apple/itunes-applescript-examples-scripts-mac-reference/
