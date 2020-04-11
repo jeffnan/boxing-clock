@@ -15,6 +15,14 @@ class Round:
 		self.color = color
 		self.roundDuration = (minutes * 60) + seconds
 
+    def __repr__(self):
+		#Shown when class is called
+        return(f"Class: {self.__class__.__name__}, Minutes: {self.minutes}, Seconds: {self.seconds}, Color: {self.color}, RoundDuration: {self.roundDuration} seconds")
+
+    def __str__(self):
+		#Shown when using print()
+        return(f"{self.__class__.__name__}({self.minutes}, {self.seconds}, {self.color})")
+
 playPauseScript = """tell app "Spotify" to playpause"""
 currentMusicStateScript = """tell app "Spotify" to get player state"""
 
