@@ -4,10 +4,6 @@ import os
 import subprocess
 import applescript
 
-#Update with new GUI
-#Should this be dynamic for any music player?
-#Should I build function for the ringing?
-
 class Round:
 	"""
 	A class used to represent a round of a workout.
@@ -30,11 +26,9 @@ class Round:
 		self.roundDuration = (minutes * 60) + seconds
 
 	def __repr__(self):
-		#Shown when class is called
 		return(f"Class: {self.__class__.__name__}, Minutes: {self.minutes}, Seconds: {self.seconds}, Color: {self.color}, RoundDuration: {self.roundDuration} seconds")
 
 	def __str__(self):
-		#Shown when using print()
 		return(f"{self.__class__.__name__}({self.minutes}, {self.seconds}, {self.color})")
 
 def play_pause():
@@ -131,36 +125,3 @@ def main():
 
 if __name__ == "__main__":
 	main()
-
-# 1. Put most code into a function or class.
-# 	- when interpreter encounters def or class keywords, it only stores those for later use and doesn't execute them until you tell it to
-# 2. Use __name__ to control execution of your code.
-# 3. Create a function called main() to contain the code you want to run.
-# 4. Call other functions from main().
-
-
-
-
-#__repr__ and __str__
-#https://dbader.org/blog/python-repr-vs-str
-
-#GitHub
-#https://towardsdatascience.com/getting-started-with-git-and-github-6fcd0f2d4ac6
-
-# AppleScript
-# https://alvinalexander.com/apple/itunes-applescript-examples-scripts-mac-reference/
-# https://256stuff.com/gray/docs/misc/itunes_applescript_commands/
-# https://dougscripts.com/itunes/itinfo/info03.php
-# https://developer.apple.com/library/archive/documentation/AppleScript/Conceptual/AppleScriptLangGuide/introduction/ASLR_intro.html#//apple_ref/doc/uid/TP40000983-CH208-SW1
-
-# Subprocess
-# https://docs.python.org/3/library/subprocess.html
-
-#Play aiff file
-#https://ss64.com/osx/afplay.html
-
-#Redo project with Tkinter/PyQT/any other GUI
-#https://techsore.com/best-python-gui/
-#https://medium.com/teamresellerclub/the-6-best-python-gui-frameworks-for-developers-7a3f1a41ac73
-#https://dev.to/codesharedot/best-python-framework-for-building-a-desktop-application-and-gui-58n5
-#https://techsore.com/best-python-gui/
